@@ -7,4 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
             form.submit();
         });
     });
+
+    const faqItems = document.querySelectorAll('.faq-item .question');
+    faqItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+    });
 });

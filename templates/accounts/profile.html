@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}Profile | De_Fast_Step{% endblock %}
+{% block title %}Профиль | De_Fast_Step{% endblock %}
 
 {% block content %}
     <section class="profile">
-        <h1>{{ user.username }}'s Profile</h1>
-        <h2>Your Bookings</h2>
+        <h1>Профиль пользователя {{ user.username }}</h1>
+        <h2>Ваши бронирования</h2>
         <ul>
             {% for booking in bookings %}
-                <li>{{ booking.start_location }} to {{ booking.end_location }} at {{ booking.start_time }}
-                    - {{ booking.status }}</li>
+                <li>Бронирование из {{ booking.start_location }} в {{ booking.end_location }}
+                    на {{ booking.start_time }} - Статус: {{ booking.status }}</li>
             {% endfor %}
         </ul>
     </section>

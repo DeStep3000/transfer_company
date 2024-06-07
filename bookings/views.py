@@ -1,40 +1,36 @@
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from .models import Booking, Vehicle, Driver
+from .forms import BookingForm
+from .models import Driver
 
 
 def home(request):
     return render(request, 'home.html')
 
 
+@login_required
 def book_transfer(request):
     if request.method == 'POST':
-        start_location = request.POST['start_location']
-        end_location = request.POST['end_location']
-        start_time = request.POST['start_time']
-        user = request.user
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.user = request.user
+            booking.price = form.calculate_price()
 
-        # Пример логики выбора автомобиля и водителя
-        vehicle = Vehicle.objects.first()  # Необходимо улучшить логику
-        driver = Driver.objects.first()  # Необходимо улучшить логику
+            # Пример логики выбора водителя
+            vehicle = booking.vehicle
+            driver = Driver.objects.filter(vehicle=vehicle).first()
+            booking.driver = driver
+            booking.end_time = booking.start_time  # Нужно улучшить логику
 
-        booking = Booking.objects.create(
-            user=user,
-            driver=driver,
-            vehicle=vehicle,
-            start_location=start_location,
-            end_location=end_location,
-            start_time=start_time,
-            end_time=start_time,  # Необходимо улучшить логику
-            price=100,  # Пример, необходимо улучшить логику
-            status='Pending'
-        )
-        return HttpResponseRedirect('/')
-
-    return render(request, 'book_transfer.html')
+            booking.save()
+            return redirect('home')
+    else:
+        form = BookingForm()
+    return render(request, 'book_transfer.html', {'form': form})
 
 
 def contact(request):

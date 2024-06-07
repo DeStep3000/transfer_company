@@ -8,28 +8,33 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Главная</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Профиль</a></li>
-                    <li><a href="{% url 'logout' %}">Выйти</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Войти</a></li>
-                    <li><a href="{% url 'register' %}">Регистрация</a></li>
-                {% endif %}
-                <li><a href="{% url 'contact' %}">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-    <footer>
-        <p>&copy; 2024 De_Fast_Step. Все права защищены.</p>
-    </footer>
-    <script src="{% static 'js/scripts.js' %}"></script>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Главная</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Профиль</a></li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-link">Выйти</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Войти</a></li>
+                <li><a href="{% url 'register' %}">Регистрация</a></li>
+            {% endif %}
+            <li><a href="{% url 'contact' %}">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    <p>&copy; 2024 De_Fast_Step. Все права защищены.</p>
+</footer>
+<script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

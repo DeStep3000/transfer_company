@@ -78,6 +78,29 @@ header nav ul li a {
     border-radius: 5px;
 }
 
+.faq {
+    padding: 50px 20px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item .question {
+    background: #007BFF;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.faq-item .answer {
+    display: none;
+    padding: 10px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+}
+
 footer {
     background-color: #333;
     color: #fff;
@@ -94,7 +117,7 @@ section {
     padding: 20px;
     background: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 form {
