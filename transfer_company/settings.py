@@ -37,7 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bookings',
+    'accounts',
 ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,10 +56,20 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'transfer_company.urls'
 
+TWILIO_ACCOUNT_SID = 'AC168f3e606f41cb95dbd25773e02258f6'
+TWILIO_AUTH_TOKEN = '1bf5948668c7ac8dcb3ffb7ab861654f'
+TWILIO_PHONE_NUMBER = '+14795526162'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates']
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

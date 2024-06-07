@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация | De_Fast_Step{% endblock %}
+
+{% block content %}
+    <section class="register">
+        <h1>Регистрация</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Зарегистрироваться</button>
+        </form>
+    </section>
+{% endblock %}

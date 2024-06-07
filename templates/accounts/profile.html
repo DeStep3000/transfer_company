@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile | De_Fast_Step{% endblock %}
+
+{% block content %}
+    <section class="profile">
+        <h1>{{ user.username }}'s Profile</h1>
+        <h2>Your Bookings</h2>
+        <ul>
+            {% for booking in bookings %}
+                <li>{{ booking.start_location }} to {{ booking.end_location }} at {{ booking.start_time }}
+                    - {{ booking.status }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

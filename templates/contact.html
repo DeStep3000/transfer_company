@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты | De_Fast_Step{% endblock %}
+
+{% block content %}
+<section class="contact">
+    <h1>Контакты</h1>
+    <form action="{% url 'contact' %}" method="post">
+        {% csrf_token %}
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Электронная почта:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit" class="btn">Отправить сообщение</button>
+    </form>
+</section>
+{% endblock %}
