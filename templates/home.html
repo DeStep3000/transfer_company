@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Главная | De_Fast_Step{% endblock %}
 
@@ -25,6 +26,14 @@
             <li>Квалифицированные водители</li>
             <li>Современные транспортные средства</li>
         </ul>
+    </section>
+    <section class="gallery">
+        <h2>Наша Галерея</h2>
+        <div class="gallery-content">
+            <img src="{% static 'images/car1.jpg' %}" alt="Транспорт 1">
+            <img src="{% static 'images/car2.jpg' %}" alt="Транспорт 2">
+            <img src="{% static 'images/car3.jpg' %}" alt="Транспорт 3">
+        </div>
     </section>
     <section class="faq">
         <h2>Часто задаваемые вопросы</h2>

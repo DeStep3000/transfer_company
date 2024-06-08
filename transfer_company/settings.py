@@ -68,8 +68,7 @@ STATICFILES_DIRS = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,3 +135,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '81ff92cff53a3e'
+EMAIL_HOST_PASSWORD = '1e0541e5ddb2d8'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+
+# Убедитесь, что у вас есть DEFAULT_FROM_EMAIL, например:
+DEFAULT_FROM_EMAIL = 'dsstepanov_2@edu.hse.ru'

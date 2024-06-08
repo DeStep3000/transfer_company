@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 
 from .forms import BookingForm
+from .forms import ContactForm
 from .models import Driver
 
 
@@ -35,14 +36,25 @@ def book_transfer(request):
 
 def contact(request):
     if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        message = request.POST['message']
-        send_mail(
-            f'Message from {name}',
-            message,
-            email,
-            [settings.DEFAULT_FROM_EMAIL],
-        )
-        return render(request, 'contact_success.html')
-    return render(request, 'contact.html')
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            subject = f'Контактное сообщение от {name}'
+            message_body = f'Имя: {name}\nEmail: {email}\nСообщение:\n{message}'
+
+            send_mail(
+                subject,
+                message_body,
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.DEFAULT_FROM_EMAIL],
+            )
+            return redirect('contact_success')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
+
+def contact_success(request):
+    return render(request, 'contact_success.html')

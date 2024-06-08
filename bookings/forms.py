@@ -43,3 +43,9 @@ class BookingForm(forms.ModelForm):
     def get_distance(self, start_location, end_location):
         # В данном примере просто возвращаем фиксированное значение
         return 10
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label='Имя', max_length=100)
+    email = forms.EmailField(label='Электронная почта')
+    message = forms.CharField(label='Сообщение', widget=forms.Textarea)
