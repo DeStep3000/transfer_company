@@ -1,11 +1,9 @@
-/* styles.css */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    overflow-y: scroll; /* Добавляем вертикальную прокрутку */
+    overflow-y: scroll;
 }
 
 header {
@@ -32,7 +30,7 @@ header nav ul li a {
 }
 
 .hero {
-    background: url('{% static "images/transport1.jpg" %}') no-repeat center center/cover;
+    background: url('https://picsum.photos/1600/900/?random&category=transport') no-repeat center center/cover;
     height: 400px;
     display: flex;
     align-items: center;
@@ -132,7 +130,7 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-    height: 40px; /* Уменьшаем высоту нижнего поля */
+    height: 40px;
 }
 
 section {

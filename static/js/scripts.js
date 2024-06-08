@@ -1,11 +1,9 @@
-// scripts.js
-
 document.addEventListener('DOMContentLoaded', function () {
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            alert('Форма отправлена!');
+            alert('Вы точно хотите сделать?');
             form.submit();
         });
     });
@@ -22,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Slider logic
     const gallery = document.querySelector('.slides');
     const images = gallery.querySelectorAll('img');
     const leftArrow = document.querySelector('.arrow-left');
@@ -44,5 +41,5 @@ document.addEventListener('DOMContentLoaded', function () {
     leftArrow.addEventListener('click', () => showSlide(currentIndex - 1));
     rightArrow.addEventListener('click', () => showSlide(currentIndex + 1));
 
-    setInterval(() => showSlide(currentIndex + 1), 5000); // Автоматическое переключение каждые 5 секунд
+    setInterval(() => showSlide(currentIndex + 1), 5000);
 });

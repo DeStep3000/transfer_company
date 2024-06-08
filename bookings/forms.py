@@ -29,7 +29,6 @@ class BookingForm(forms.ModelForm):
         end_location = self.cleaned_data.get('end_location')
         vehicle = self.cleaned_data.get('vehicle')
 
-        # Пример логики расчета тарифа
         distance = self.get_distance(start_location, end_location)
         base_rate = 100  # Базовый тариф
         vehicle_rate = {
