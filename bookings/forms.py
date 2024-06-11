@@ -10,7 +10,10 @@ class BookingForm(forms.ModelForm):
         model = Booking
         fields = ['start_location', 'end_location', 'start_time', 'vehicle']
         widgets = {
-            'start_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'start_time': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
+            'start_location': forms.TextInput(attrs={'class': 'form-control'}),
+            'end_location': forms.TextInput(attrs={'class': 'form-control'}),
+            'vehicle': forms.Select(attrs={'class': 'form-control'})
         }
         labels = {
             'start_location': 'Место отправления',

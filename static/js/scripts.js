@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     forms.forEach(form => {
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            alert('Вы точно хотите сделать?');
+            // alert('Вы точно хотите сделать?');
             form.submit();
         });
     });

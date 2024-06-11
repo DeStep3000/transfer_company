@@ -25,12 +25,14 @@ def register(request):
             request.session['verification_code'] = code
             request.session['phone_number'] = user.phone_number
 
-            client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
-            client.messages.create(
-                body=f"Ваш код подтверждения: {code}",
-                from_=settings.TWILIO_PHONE_NUMBER,
-                to=user.phone_number
-            )
+            # client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+            # client.messages.create(
+            #     body=f"Ваш код подтверждения: {code}",
+            #     from_=settings.TWILIO_PHONE_NUMBER,
+            #     to=user.phone_number
+            # )
+
+            print(f'Ваш код подтверждения: {code}')
 
             return redirect('verify_phone')
     else:

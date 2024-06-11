@@ -28,7 +28,7 @@ def book_transfer(request):
             booking.end_time = booking.start_time  # Нужно улучшить логику
 
             booking.save()
-            return redirect('home')
+            return redirect('transfer_success')
     else:
         form = BookingForm()
     return render(request, 'book_transfer.html', {'form': form})
@@ -50,7 +50,7 @@ def contact(request):
                 settings.DEFAULT_FROM_EMAIL,
                 [settings.DEFAULT_FROM_EMAIL],
             )
-            return redirect('contact_success')
+            return redirect('transfer_success')
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
@@ -58,3 +58,7 @@ def contact(request):
 
 def contact_success(request):
     return render(request, 'contact_success.html')
+
+
+def transfer_success(request):
+    return render(request, 'bookings/transfer_success.html')
